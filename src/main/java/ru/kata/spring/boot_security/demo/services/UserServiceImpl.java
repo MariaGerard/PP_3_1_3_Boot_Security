@@ -45,14 +45,14 @@ public class UserServiceImpl implements UserDetailsService, UsersService {
         return ((UserDetailsSecurity) authentication.getPrincipal()).getUser();
     }
 
-
+    @Override
     @Transactional
     public void save(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
-
+    @Override
     @Transactional
     public void update(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -60,6 +60,7 @@ public class UserServiceImpl implements UserDetailsService, UsersService {
 
     }
 
+    @Override
     @Transactional
     public void delete(int id) {
         userRepository.deleteById(id);
@@ -67,7 +68,6 @@ public class UserServiceImpl implements UserDetailsService, UsersService {
     }
 
     @Override
-    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = userRepository.findByUsername(username);
 

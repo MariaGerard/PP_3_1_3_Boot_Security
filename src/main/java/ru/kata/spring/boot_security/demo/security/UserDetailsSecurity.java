@@ -12,6 +12,7 @@ import java.util.Set;
 public class UserDetailsSecurity implements UserDetails {
 
     private final User user;
+
     public UserDetailsSecurity(User user) {
         this.user = user;
     }
@@ -19,7 +20,6 @@ public class UserDetailsSecurity implements UserDetails {
     public User getUser() {
         return this.user;
     }
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

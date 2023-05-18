@@ -27,7 +27,7 @@ public class NewUserValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        User user = (User)target;
+        User user = (User) target;
         Optional<User> user_n = userRepository.findByUsername(user.getUserName());
         if (user_n.isPresent()) {
             errors.rejectValue("username", "", "Человек с таким именем уже существует");
